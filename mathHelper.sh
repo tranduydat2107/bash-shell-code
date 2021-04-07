@@ -16,7 +16,7 @@ then
 echo "Equation $a x^2 + $b x + $c = 0 has countless root"
 elif [ $a -ne 0 ] 
 then
- let "delta=($b^2 - 4 * $a * $c)"
+ let "delta=(($b * $b) - (4 * $a * $c))"
     if [ $delta -lt 0 ]
     then
        echo "Equation $a x^2 + $b x + $c = 0 has no solution"
@@ -25,23 +25,32 @@ then
         x=$((-$b / 2 * $a))
         echo "Equation $a x^2 + $b x + $c = 0 has double solution x1 = x2 = $x"
     else
-       let "x1=(-$b - sqrt($delta)) / 2 * $a"
-       let "x1=(-$b + sqrt($delta)) / 2 * $a"
+       let "x1=(-$b - sqrt($delta)) / (2 * $a)"
+       let "x1=(-$b + sqrt($delta)) / (2 * $a)"
        echo "Equation $a x^2 + $b x + $c = 0 has 2 solution x1 =$x1 and x2 = $x2"
     fi   
 fi
 }
+
+evaluateCircleArea () {
+    echo "Welcome to circle area evaluator"
+    echo "Please input the circle's radius: "
+    read radius
+    area=$(($radius * $radius * 3,14))
+    echo "Area of the circle has the radius of $radius is $area"
+
+}
 #main execute
 printMenu
-let "x=(4^2 - (4 * 4 * 1))"
-echo $x
+# let "x=((4^2) - (4 * 4 * 1))"
+# echo $x
 read choice
 case $choice in
     1)
     quadraticEquation
     ;;
     2)
-    echo "hi"
+    evaluateCircleArea
     ;;
     3)
     echo "three"
