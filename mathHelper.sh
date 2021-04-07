@@ -94,7 +94,7 @@ case $choice in
     evaluateCircleArea #perform calculate circle area
     ;;
     3)
-    isPrime
+    isPrime            #perform check a number is prime or not
     res=$?
     if [ $res -eq 1 ]
     then
@@ -104,6 +104,7 @@ case $choice in
     fi   
     ;;
     4)
+      echo "See you again!!"
       exit 0
     ;;  
     *)
